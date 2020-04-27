@@ -1,8 +1,13 @@
 import React from 'react';
+import {Button} from 'antd'
+
 
 function App() {
   return (
-    <h2>孔利强Add</h2>
+    <div>
+        孔利强
+      <Button type="primary">danwi</Button>  
+    </div>
   )
 }
 
