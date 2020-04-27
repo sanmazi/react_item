@@ -5,7 +5,7 @@ import {Button} from 'antd'
 function App() {
   return (
     <div>
-        孔利强
+        孔利强...
       <Button type="primary">danwi</Button>  
     </div>
   )
