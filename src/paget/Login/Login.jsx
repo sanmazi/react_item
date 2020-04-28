@@ -1,43 +1,20 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import ps from 'querystring'
+import ajax from '../../api/ajax'
+
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import logo from './images/logo.png'
 import './css/Login.less'
 
 const {Item} = Form
-/* axios的请求拦截器:
-    1.统处理post 请求json编码问题 (转为urlencoded)
-    2.统一返回真 正的数据data,而不是axios包装的那个response对象
-*/
-
-    axios.interceptors.request.use((config)=>{
-   //     1.统处理post 请求json编码问题 (转为urlencoded)
-       const {method,data}=config
-        //method请求方式   data  输入框输入的用户信息
-        //toLowerCase()转换为小写
-        //data类型为对象
-       if (method.toLowerCase()==="post" && data instanceof Object) {
-           //使用querystring将data内容转换为urlencoded  username=admin&password=adminc
-        config.data= ps.stringify(data)
-       }
-   
-        return config 
-
-    })
-    // ,(error)=>{
-
-    //     console.log(error);
-    //     return error 
-
-    // }
 
 export default class Login extends Component {
         //表单验证请求回调
              onFinish = values=>{
-                axios.post('/login',ps.stringify(values)).then(
-                    response=>{console.log( "成功",response.data)},
+                ajax.post('/login',ps.stringify(values)).then(
+                    response=>{console.log( "成功",response)},
                     error=>{console.log('失败',error)}
                 )        
              }
