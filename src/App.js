@@ -1,14 +1,19 @@
-import React from 'react';
-import {Button} from 'antd'
+import React ,{Component}from 'react';
+// import {Button} from 'antd'
+import {Route,Switch,Redirect} from 'react-router-dom'
+
+import Adm from './paget/Adm/Adm'
+import Login from './paget/Login/Login'
 
 
-function App() {
-  return (
-    <div>
-        孔利强...
-      <Button type="primary">danwi</Button>  
-    </div>
-  )
+export default class App extends Component {
+    render() {
+      return (
+              <Switch>
+                <Route path="/login" component={Login}/>
+                <Route path="/admin" component={Adm}/>
+                <Redirect to="/login"/>
+              </Switch>
+      )
+  }
 }
-
-export default App;
